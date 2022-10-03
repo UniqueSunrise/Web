@@ -1,19 +1,19 @@
-package service;
+package ru.usatu.students.service;
 
 import org.springframework.stereotype.Service;
-import ru.prog.Web.model.Student;
+import ru.usatu.students.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class StudentServiceCollection {
+public class StudentServiceCollection implements StudentService {
     private List<Student> students = new ArrayList<>();
     public StudentServiceCollection() {
-        students.add(new Student(1,"Ivan"));
-        students.add(new Student(2,"Ivan2"));
-        students.add(new Student(3,"Ivan3"));
+        students.add(new Student(1,"Radmir"));
+        students.add(new Student(2,"Timur"));
+        students.add(new Student(3,"Renat"));
     }
 
     public List<Student> getStudents() {

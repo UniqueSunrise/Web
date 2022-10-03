@@ -1,10 +1,10 @@
-package ru.prog.Web;
+package ru.usatu.students;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class WebApplicationTests {
+class StudentsApplicationTests {
 
 	@Test
 	void contextLoads() {
