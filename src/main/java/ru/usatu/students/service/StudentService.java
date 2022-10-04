@@ -7,13 +7,13 @@ import java.util.List;
 public interface StudentService
 {
 
-    List<Student> getStudents();
+    List<Student> getStudents() throws Exception;
 
-    Student getStudent(int id);
+    Student getStudent(int id) throws Exception;
 
-    Student addStudent(Student student);
+    Student addStudent(Student student) throws Exception;
 
-    Student editStudent(int id, String name);
+    Student editStudent(int id, String name) throws Exception;
 
-    void deleteStudent(int id);
+    void deleteStudent(int id) throws Exception;
 }

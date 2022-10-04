@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<students>
+    <student>
+        <id>1</id>
+        <name>Сираев Радмир</name>
+    </student>
+    <student>
+        <id>2</id>
+        <name>Хасанов Ренат</name>
+    </student>
+    <student>
+        <id>3</id>
+        <name>Аюпов Тимур</name>
+    </student>
+    <student>
+        <id>4</id>
+        <name>Студент Студент</name>
+    </student>
+</students>

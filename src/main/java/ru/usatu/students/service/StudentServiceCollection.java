@@ -1,13 +1,12 @@
 package ru.usatu.students.service;
 
-import org.springframework.stereotype.Service;
 import ru.usatu.students.model.Student;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Service
+
 public class StudentServiceCollection implements StudentService {
     private List<Student> students = new ArrayList<>();
     public StudentServiceCollection() {
