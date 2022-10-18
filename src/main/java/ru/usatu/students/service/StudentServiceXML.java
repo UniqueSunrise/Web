@@ -10,7 +10,7 @@ import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 import java.io.File;
 import java.util.List;
-@Service
+
 public class StudentServiceXML implements StudentService{
     private static final String FILE_PATH = StudentsApplication.class.getClassLoader()
             .getResource("students.xml").getPath();
