@@ -6,7 +6,7 @@ import ru.usatu.students.model.Student;
 import ru.usatu.students.service.StudentService;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/students")
 public class StudentController {
