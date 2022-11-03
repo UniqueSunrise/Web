@@ -31,8 +31,12 @@
 										{{ student.name}}
 									</div>
 								</div>
-								<div>
-									<button class = "button" v-on:click="addStudent">Добавить</button>
+								<div class="buttons">
+									<div>
+										<button class="button" v-on:click="deleteStudent">Удалить</button>
+										<button class="button" v-on:click="changeStudent">Изменить</button>
+										<button class="button" v-on:click="addStudent">Добавить</button>
+									</div>
 								</div>
 							</div>
 					   </div>`,
@@ -45,6 +49,12 @@
 		    methods: {
 			    addStudent: function (event) {
 			        this.$router.push('/addStudent');
+			    },
+			    deleteStudent: function (event) {
+			        this.$router.push('/deleteStudent');
+			    },
+			    changeStudent: function (event) {
+			        this.$router.push('/changeStudent');
 			    },
 		    },
 		    mounted() {
@@ -73,7 +83,7 @@
 					<div class="buttons">
 						<div>
 							<button class="button" v-on:click="addStudent">Cоxpанить</button>
-							<button class="button" v-on:click="cancel">отмена</button>
+							<button class="button" v-on:click="cancel">Отмена</button>
 						</div>
 					</div>
 				</div>
@@ -103,12 +113,102 @@
 					}
 				}
 			}
-
-
+		deleteStudentComponent = {
+			template: `<div>
+				<div class="add-form">
+					<div class="caption"><h1>Форма удаления</h1></div>
+					<section>
+						<div>
+							<div>
+								<input type="text" v-model="student.id" placeholder="Hoмep студента">
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="button-container">
+					<div class="buttons">
+						<div>
+							<button class="button" v-on:click="deleteStudent">Удалить</button>
+							<button class="button" v-on:click="cancel">Отмена</button>
+						</div>
+					</div>
+				</div>
+			</div>`,
+			data() {
+				return {
+					student: {
+						id: null
+					} } },
+			methods: {
+				deleteStudent: function (event) {
+					axios.delete('http://localhost:8080/students/'+ this.student.id)
+						.then (response => {
+							console.log("student delete");
+							this.$router.push('/students');
+						})
+						.catch(error => {
+						 alert(error);
+						});
+					},
+					cancel: function (event) {
+						this.$router.push('/students');
+					}
+				}
+			}
+			changeStudentComponent = {
+			template: `<div>
+				<div class="add-form">
+					<div class="caption"><h1>Форма изменения</h1></div>
+					<section>
+						<div>
+							<div>
+								<input type="text" v-model="student.id" placeholder="Hoмep студента">
+							</div>
+							<div>
+								<input type="text" v-model="student.name" placeholder="Имя студента">
+							</div>
+						</div>
+					</section>
+				</div>
+				<div class="button-container">
+					<div class="buttons">
+						<div>
+							<button class="button" v-on:click="changeStudent">Изменить</button>
+							<button class="button" v-on:click="cancel">Отмена</button>
+						</div>
+					</div>
+				</div>
+			</div>`,
+			data() {
+				return {
+					student: {
+						id: null,
+						name: null
+					} } },
+			methods: {
+				changeStudent: function (event) {
+					axios.put('http://localhost:8080/students/' + this.student.id, this.student.name, {
+							headers:{'Content-Type': 'application/json; charset=utf-8'}
+						})
+						.then (response => {
+							console.log("student change");
+							this.$router.push('/students');
+						})
+						.catch(error => {
+						 alert(error);
+						});
+					},
+					cancel: function (event) {
+						this.$router.push('/students');
+					}
+				}
+			}
 		const routes = [
 			{path: '/', component: studentsComponent},
 			{path: '/students', component: studentsComponent},
 			{path: '/addStudent', component: addStudentComponent},
+			{path: '/deleteStudent', component: deleteStudentComponent},
+			{path: '/changeStudent', component: changeStudentComponent},
 		]
 		const router = VueRouter.createRouter({
 			history: VueRouter.createWebHashHistory(),
