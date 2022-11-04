@@ -4,7 +4,7 @@ body{
     height: 100vh;
     display: flex;
     position: relative;
-    background: url(https://html5book.ru/wp-content/uploads/2015/07/background39.png);
+    background-image: url(./background39.png);
     align-items: center;
     justify-content: center;
     font-family: 'IBM Plex Sans', sans-serif;
